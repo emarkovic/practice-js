@@ -1,0 +1,59 @@
+/*General styles*/
+html, body {
+    margin: 0;
+    height: 100%;
+}
+body {
+    padding-top: 15px;
+}
+section {
+    margin-top: 20px;
+    height: 40%;
+}
+
+/*Nav Styles*/
+#lblPrev, #lblNext {
+    margin-top: 0;
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: normal;
+}
+#btnPrev, #lblPrev {
+    float: left;
+}
+#btnNext, #lblNext {
+    float: right;
+}
+
+/*Description and function styles*/
+#descAndFunc {
+    display: flex;    
+    height: 100%;
+}
+#desc {    
+    flex-grow: 1;    
+    flex-basis: 0; 
+    border: 1px solid black;
+    min-height: 420px;
+}
+#desc > .padding p {
+    font-size: 15px;
+}
+#func {
+    flex-grow: 1.5;        
+    flex-basis: 0;    
+}
+#descAndFunc .padding {
+    padding: 0 20px;
+}
+#aceEditor {
+    height: 260px;
+}
+#closingTag {
+    margin-top: 0;
+}
+#btnTest {    
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+}
