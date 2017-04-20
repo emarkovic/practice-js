@@ -5,10 +5,10 @@ html, body {
 }
 body {
     padding-top: 15px;
+    font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif
 }
 section {
     margin-top: 20px;
-    /*height: 40%;*/
 }
 
 /*Nav Styles*/
@@ -56,4 +56,21 @@ section {
     width: 100px;
     display: block;
     margin: 0 auto;
+}
+
+/*Result area test styles*/
+.test {
+    margin-bottom: 10px;
+}
+
+.test p {
+    margin-bottom: 0;
+}
+
+.red {
+    color: #f4424b;
+}
+
+.green {
+    color: #41f483;
 }

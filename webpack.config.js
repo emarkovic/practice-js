@@ -38,12 +38,12 @@ module.exports = {
   },  
 
   //enable jQuery in all modules
-  plugins: [
-      new webpack.ProvidePlugin({
-          $: "jquery",
-          jQuery: "jquery"
-      })
-  ],
+  // plugins: [
+  //     new webpack.ProvidePlugin({
+  //         $: "jquery",
+  //         jQuery: "jquery"
+  //     })
+  // ],
 
   // Enable sourcemaps for debugging webpack's output
   devtool: "source-map",

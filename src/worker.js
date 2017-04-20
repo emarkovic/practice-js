@@ -7,7 +7,15 @@ self.addEventListener('message', e => {
     // save output, compare with expected
     // decide if answer was correct
     e.data.tests.forEach(test => {
-        let studentOutput = eval(func + test.call)
+        let studentOutput;
+        try {
+            studentOutput = eval(func + test.call);
+        } catch (e) {
+            let colonIndex = e.stack.indexOf(':') + 1;
+            let errorType = e.stack.substring(0, colonIndex);            
+            studentOutput = errorType + ' ' + e.message;
+        }
+
         results.push({
             call: test.call,
             expectedOutput: test.expectedOutput,

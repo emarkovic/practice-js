@@ -20,20 +20,14 @@ export class AppStore extends EventEmitter {
                         functionStub: 'function addHello(str)',
                         tests: [
                             {call: "addHello('str')", expectedOutput: 'Hello str'},
-                            {call: "addHello()", expectedOutput: "Hello"},
-                            // {call: "", expectedOutput: ""},
-                            // {call: "", expectedOutput: ""},
-                            // {call: "", expectedOutput: ""},
+                            {call: "addHello()", expectedOutput: "Hello"}
                         ]
                     });
 
                     worker.addEventListener('message', e => {
                         this.data.response = e.data;
                         this.emit('change');
-                    })                    
-                    // this.data.response = payload.data.item.response;
-                    // console.log(payload.data.item)
-                    // this.emit('change');
+                    });
                     break;
             }
         });
