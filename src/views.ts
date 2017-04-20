@@ -39,7 +39,7 @@ export class EditorView {
 
         $("#btnTest").on('click', () => {
             EditorActions.testResponse({
-                response: editor.getValue()
+                studentCode: editor.getValue()
             });
         });
     }
@@ -69,6 +69,7 @@ export class ResultsView {
 
     render(response) {
         //update results area
+        console.log(response)
         this.resultsArea.html('<p>' + response + '</p>')
     }
 }
