@@ -19,8 +19,8 @@ export class AppStore extends EventEmitter {
                         studentCode: payload.data.item.studentCode,
                         functionStub: 'function addHello(str)',
                         tests: [
-                            {call: "addHello('str')", expectedOutput: 'Hello str'}
-                            // {call: "", expectedOutput: ""},
+                            {call: "addHello('str')", expectedOutput: 'Hello str'},
+                            {call: "addHello()", expectedOutput: "Hello"},
                             // {call: "", expectedOutput: ""},
                             // {call: "", expectedOutput: ""},
                             // {call: "", expectedOutput: ""},
