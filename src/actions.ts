@@ -14,3 +14,23 @@ export class EditorActions {
         AppDispatcher.dispatch(action);
     }
 }
+export class PageActions {
+    static readonly NEXT_EXERCISE = 'next_exercise';
+    static readonly PREVIOUS_EXERCISE = 'previous_exercise';
+    static readonly GET_EXERCISE = 'get_exercise';
+
+    static nextExercise() {
+        let action = new Action(PageActions.NEXT_EXERCISE)
+        AppDispatcher.dispatch(action);
+    }
+
+     static previousExercise() {
+        let action = new Action(PageActions.PREVIOUS_EXERCISE)
+        AppDispatcher.dispatch(action);
+    }
+
+     static getExercise() {
+        let action = new Action(PageActions.GET_EXERCISE)
+        AppDispatcher.dispatch(action);
+    }
+}

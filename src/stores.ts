@@ -2,7 +2,7 @@ import {EventEmitter} from 'events'
 import {worker} from './index'
 import {Exercise} from './types'
 
-import {Action, EditorActions, AppDispatcher} from './actions';
+import {AppDispatcher, Action, EditorActions, PageActions} from './actions';
 
 export class AppStore extends EventEmitter {
     private data = {
@@ -51,7 +51,15 @@ export class PageStore extends EventEmitter {
                 this.data = (data as any).exercises     
                 console.log(this.data)           
                 this.emit('change')
-            })       
+            })
+         
+        AppDispatcher.register((payload:Action) => {
+            switch (payload.actionType) {
+                case PageActions.NEXT_EXERCISE: 
+                case PageActions.PREVIOUS_EXERCISE: 
+                case PageActions.GET_EXERCISE: 
+            }
+        })       
     }
 
     getExcersize() :Exercise {
