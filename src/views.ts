@@ -3,15 +3,14 @@ import 'brace/mode/javascript';
 import 'brace/theme/tomorrow';
 import 'brace/ext/language_tools'
 
-import {EditorActions, PageActions} from './actions';
+import {EditorActions, PageActions} from './actions'
 import {AppStore, PageStore} from './stores'
+import {Exercise} from './types'
 
 // Handles getting initial data for display
 // Handles moving from one excersize to the next
 // Handles updating description and function stub when exercises change
 export class PageView {
-    currentExcersize = 0
-
     nextBtn
     previousBtn    
     descTitle
@@ -26,15 +25,21 @@ export class PageView {
         this.funcStub = document.getElementById("funcStub")
 
         this.pageStoreSingleton.on('change', e => this.render())
+        
 
-        PageActions.getExercise()
-
-        this.nextBtn.addEventListener('click', () => PageActions.nextExercise())
+        this.nextBtn.addEventListener('click', () => {
+            PageActions.nextExercise()
+        })
         this.previousBtn.addEventListener('click', () => PageActions.previousExercise())    
     }
 
     render() {
+        var data: Exercise = this.pageStoreSingleton.getExercise();
+        console.log(data)
 
+        this.descTitle.innerHTML = data.title
+        this.descContent.innerHTML = data.description
+        this.funcStub.innerHTML = data.functionStub + ' {'
     }
 }
 

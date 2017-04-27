@@ -9,5 +9,3 @@ const pageStoreSingleton = new PageStore();
 new PageView(pageStoreSingleton)
 new EditorView();
 new ResultsView(appStoreSingleton);
-
-// For next week 

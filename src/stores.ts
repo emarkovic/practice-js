@@ -48,21 +48,29 @@ export class PageStore extends EventEmitter {
         fetch('../data/settings.json')
             .then(response => response.json()) 
             .then(data => {
-                this.data = (data as any).exercises     
-                console.log(this.data)           
+                this.data = (data as any).exercises              
                 this.emit('change')
             })
          
         AppDispatcher.register((payload:Action) => {
             switch (payload.actionType) {
                 case PageActions.NEXT_EXERCISE: 
+                    if (this.currentExcersize < this.data.length - 1) {
+                        this.currentExcersize++
+                        this.emit('change')
+                    }
+                    break;
                 case PageActions.PREVIOUS_EXERCISE: 
-                case PageActions.GET_EXERCISE: 
+                    if (this.currentExcersize > 0) {
+                        this.currentExcersize--
+                        this.emit('change')
+                    }
+                    break;
             }
         })       
     }
 
-    getExcersize() :Exercise {
+    getExercise() :Exercise {
         return this.data[this.currentExcersize];
     }
 }

@@ -2,8 +2,13 @@
     "exercises": [
         {
             "title" : "Hello world",
-            "description" : "Write a function that will return your name preceeded by 'Hello'. This function will take your name as a string.",
-            "functionStub" : "function hello(name) {}"            
+            "description" : "Write a function that will return a string preceded by 'Hello'. This function will take a word or phrase as a string. You should protect against null values.",
+            "functionStub" : "function hello(name)"            
+        },
+        {
+            "title" : "Add to array",
+            "description" : "Write a function that will take an array of strings and another string and add the string onto the array. You must protect against null values for both the array and the incoming string. Then return the modified array.",
+            "functionStub": "function addToArray(arr, str)"
         }
     ]
 }
