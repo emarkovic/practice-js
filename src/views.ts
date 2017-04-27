@@ -3,8 +3,8 @@ import 'brace/mode/javascript';
 import 'brace/theme/tomorrow';
 import 'brace/ext/language_tools'
 
-import {EditorActions} from './actions';
-import {AppStore} from './stores'
+import {EditorActions, PageActions} from './actions';
+import {AppStore, PageStore} from './stores'
 
 // Handles getting initial data for display
 // Handles moving from one excersize to the next
@@ -18,12 +18,22 @@ export class PageView {
     descContent
     funcStub
 
-    constructor() {
-        
+    constructor(private pageStoreSingleton: PageStore) {
+        this.nextBtn = document.getElementById("btnNext")
+        this.previousBtn = document.getElementById("btnPrev")
+        this.descTitle = document.getElementById("descTitle")
+        this.descContent = document.getElementById("descContent")
+        this.funcStub = document.getElementById("funcStub")
 
-        //get the previous button and handle on click
-        //get the next button and handle on click
+        this.pageStoreSingleton.on('change', e => this.render())
 
+        PageActions.getExercise()
+
+        this.nextBtn.addEventListener('click', () => PageActions.nextExercise())
+        this.previousBtn.addEventListener('click', () => PageActions.previousExercise())    
+    }
+
+    render() {
 
     }
 }
