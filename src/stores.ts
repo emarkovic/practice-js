@@ -1,5 +1,6 @@
-import {EventEmitter} from 'events';
+import {EventEmitter} from 'events'
 import {worker} from './index'
+import {Exercise} from './types'
 
 import {Action, EditorActions, AppDispatcher} from './actions';
 
@@ -35,5 +36,25 @@ export class AppStore extends EventEmitter {
 
     getData() {
         return this.data;
+    }
+}
+
+export class PageStore extends EventEmitter {
+    private currentExcersize: number = 0
+    private data: Exercise[]
+    constructor() {
+        super()
+
+        fetch('../data/settings.json')
+            .then(response => response.json()) 
+            .then(data => {
+                this.data = (data as any).exercises     
+                console.log(this.data)           
+                this.emit('change')
+            })       
+    }
+
+    getExcersize() :Exercise {
+        return this.data[this.currentExcersize];
     }
 }

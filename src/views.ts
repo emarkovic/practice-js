@@ -6,22 +6,25 @@ import 'brace/ext/language_tools'
 import {EditorActions} from './actions';
 import {AppStore} from './stores'
 
-//Handles moving from one excersize to the next
+// Handles getting initial data for display
+// Handles moving from one excersize to the next
+// Handles updating description and function stub when exercises change
 export class PageView {
+    currentExcersize = 0
+
+    nextBtn
+    previousBtn    
+    descTitle
+    descContent
+    funcStub
+
     constructor() {
+        
+
         //get the previous button and handle on click
         //get the next button and handle on click
-    }
-}
 
-//Description section, when something happens, update the description
-export class DescriptionView {
-    constructor() {
-        //get the description and hangle on change
-    }
-    
-    render() {
-        //get new data and put it in the element
+
     }
 }
 

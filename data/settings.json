@@ -1,6 +1,7 @@
 {
-    "exersizes": [
+    "exercises": [
         {
+            "title" : "Hello world",
             "description" : "Write a function that will return your name preceeded by 'Hello'. This function will take your name as a string.",
             "functionStub" : "function hello(name) {}"            
         }
