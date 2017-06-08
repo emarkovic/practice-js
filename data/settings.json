@@ -11,8 +11,26 @@
         },
         {
             "title" : "Add to array",
-            "description" : "Write a function that will take an array of strings and another string and add the string onto the array. You must protect against null values for both the array and the incoming string. Then return the modified array.",
-            "functionStub": "function addToArray(arr, str)"
+            "description" : "Write a function that will take an array of strings and another string and add the string onto the array. If the array is null, return null. If the string is null or empty, return the original array. Otherwise return the modified array.",
+            "functionStub": "function addToArray(arr, str)",
+            "tests" : [
+                {
+                    "call": "addToArray(['one', 'two', 'three', 'four'], 'five')", 
+                    "expectedOutput": "'one', 'two', 'three', 'four', 'five']"
+                },
+                {
+                    "call": "addToArray(null, 'five')",
+                    "expectedOutput": "null"
+                },
+                {
+                    "call": "addToArray(['one', 'two', 'three', 'four'], null)",
+                    "expectedOutput": "['one', 'two', 'three', 'four']"
+                },
+                {
+                    "call": "addToArray(['one', 'two', 'three', 'four'], '')",
+                    "expectedOutput": "['one', 'two', 'three', 'four']"
+                }
+            ]
         }
     ]
 }

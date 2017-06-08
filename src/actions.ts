@@ -8,9 +8,15 @@ export class Action {
 
 export class EditorActions {
     static readonly TEST_RESPONSE = 'test_response';
+    static readonly COMPLETE_RESPONSE = 'complete_response';
 
     static testResponse(data) {
         let action = new Action(EditorActions.TEST_RESPONSE, {item: data})
+        AppDispatcher.dispatch(action);
+    }
+
+    static completeResponse(data) {
+        let action = new Action(EditorActions.COMPLETE_RESPONSE, {item: data})
         AppDispatcher.dispatch(action);
     }
 }

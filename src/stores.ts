@@ -18,17 +18,16 @@ export class AppStore extends EventEmitter {
                     // send data to web worker
                     worker.postMessage({
                         studentCode: payload.data.item.studentCode,
-                        functionStub: 'function addHello(str)',
+                        functionStub: 'function addHello(name)',
                         tests: [
                             {call: "addHello('str')", expectedOutput: 'Hello str'},
                             {call: "addHello()", expectedOutput: "Hello"}
                         ]
-                    });
-
-                    worker.addEventListener('message', e => {
-                        this.data.response = e.data;
-                        this.emit('change');
-                    });
+                    });                 
+                    break;
+                case EditorActions.COMPLETE_RESPONSE:
+                    this.data.response = payload.data.item;
+                    this.emit('change');
                     break;
             }
         });
@@ -47,8 +46,9 @@ export class PageStore extends EventEmitter {
 
         fetch('../data/settings.json')
             .then(response => response.json()) 
-            .then(data => {
-                this.data = (data as any).exercises              
+            .then((data: any) => {
+                this.data = data.exercises              
+                console.log(this.data)
                 this.emit('change')
             })
          
@@ -71,6 +71,15 @@ export class PageStore extends EventEmitter {
     }
 
     getExercise() :Exercise {
-        return this.data[this.currentExcersize];
+        let currData = this.data[this.currentExcersize];
+        return {
+            title: currData.title,
+            description: currData.description,
+            functionStub: currData.functionStub
+        }
+    }
+
+    getTests() {
+
     }
 }

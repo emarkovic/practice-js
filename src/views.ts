@@ -6,6 +6,7 @@ import 'brace/ext/language_tools'
 import {EditorActions, PageActions} from './actions'
 import {AppStore, PageStore} from './stores'
 import {Exercise} from './types'
+import {worker} from './index'
 
 // Handles getting initial data for display
 // Handles moving from one excersize to the next
@@ -69,6 +70,12 @@ export class ResultsView {
     resultsArea;
     constructor(private appStoreSingleton:AppStore) {
         this.resultsArea = document.getElementById("resultsArea");
+
+        worker.addEventListener('message', e => {    
+            EditorActions.completeResponse({
+                response: e.data
+            })                     
+        });          
 
         this.appStoreSingleton.on('change', e => this.render())
     }
